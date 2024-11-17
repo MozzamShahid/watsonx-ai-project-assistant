@@ -1,0 +1,6 @@
+fastapi==0.103.1
+uvicorn==0.23.2
+python-dotenv==1.0.0
+langchain==0.0.292
+ibm-watson==7.0.0
+pydantic==2.3.0

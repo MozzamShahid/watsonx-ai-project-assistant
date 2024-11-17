@@ -6,7 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "create-venv": "python -m venv venv",
+    "activate-venv": "source venv/bin/activate",
+    "install-python-deps": "pip install -r python_requirements.txt",
+    "start-api": "uvicorn api:app --reload"
   },
   "dependencies": {
     "lucide-react": "^0.460.0",
