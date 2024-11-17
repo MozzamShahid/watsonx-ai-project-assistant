@@ -35,6 +35,27 @@ export default function ChatInterface() {
     setInput(""); // Clear input field
   };
 
+  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file && activeChat) {
+      const userMessage: Message = { type: "user", content: `Uploaded: ${file.name}` };
+      const aiResponse: Message = {
+        type: "ai",
+        content: `Processing the uploaded file: ${file.name}`,
+      };
+
+      // Update active chat messages with uploaded file information
+      setChats((prevChats) =>
+        prevChats.map((chat) =>
+          chat.id === activeChatId
+            ? { ...chat, messages: [...chat.messages, userMessage, aiResponse] }
+            : chat
+        )
+      );
+      e.target.value = ""; // Reset the input field
+    }
+  };
+
   const handleNewChat = () => {
     const newChatId = `chat-${Date.now()}`;
     const newChat = { id: newChatId, name: "New Chat", messages: [] };
@@ -131,6 +152,7 @@ export default function ChatInterface() {
               type="file"
               accept=".pdf,.png,.jpg,.jpeg"
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+              onChange={handleUpload}
             />
           </div>
 
