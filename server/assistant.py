@@ -1,5 +1,6 @@
 import json
 from llm_setup import create_chain
+from langchain.chains import LLMChain
 import prompts
 import logging
 
