@@ -14,7 +14,7 @@ export default function ChatInterface() {
   const [input, setInput] = useState("");
 
   const activeChat = chats.find((chat) => chat.id === activeChatId); // Find the active chat
-  const hasStartedChat = activeChat?.messages.length > 0; // Check if the current chat has messages
+  const hasStartedChat = activeChat && activeChat.messages && activeChat.messages.length > 0;
   const shouldShowIntro = input.trim() === "" && !hasStartedChat; // Show intro if no input and no messages
 
   const handleSendMessage = (e: React.FormEvent) => {
