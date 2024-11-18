@@ -1,11 +1,12 @@
-import ChatInterface from "@/components/ChatInterface";
-import Header from "@/components/Header";
+
+
+
+import ChatInterface from '@/components/ChatInterface'
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen">
-      <Header /> {/* Header takes fixed 64px */}
-        <ChatInterface /> {/* Occupies remaining height */}
+    <main className="flex min-h-screen flex-col">
+      <ChatInterface />
     </main>
-  );
+  )
 }
