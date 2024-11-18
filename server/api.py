@@ -31,12 +31,14 @@ class ProjectScope(BaseModel):
 
 @app.post("/api/query")
 async def process_query(query: Query):
+    logger.info(f"Received query: {query.query}")
     try:
         response = assistant.process_query(query.query)
+        logger.info(f"Generated response: {response}")
         return {"response": response}
     except Exception as e:
         logger.error(f"Error processing query: {str(e)}")
-        raise HTTPException(status_code=500, detail="Internal server error")
+        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
 
 @app.post("/api/generate-document/{doc_type}")
 async def generate_document(doc_type: str, project_details: ProjectDetails):
